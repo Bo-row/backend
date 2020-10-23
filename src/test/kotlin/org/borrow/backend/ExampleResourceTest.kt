@@ -11,7 +11,7 @@ class ExampleResourceTest {
     @Test
     fun testHelloEndpoint() {
         given()
-          .`when`().get("/resteasy/hello")
+          .`when`().get("/hello")
           .then()
              .statusCode(200)
              .body(`is`("hello"))

@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e7a145bedb45421cbc0abd9b9a20c992)](https://www.codacy.com/gh/Bo-row/backend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bo-row/backend&amp;utm_campaign=Badge_Grade)
+[![Bo-row](https://circleci.com/gh/Bo-row/backend.svg?style=shield)](https://app.circleci.com/pipelines/github/Bo-row/backend?branch=master)
 # Borrow application backend
 
 This project is a backend for borrow application

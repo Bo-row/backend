@@ -16,14 +16,14 @@ val quarkusPlatformVersion: String by project
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation("io.quarkus:quarkus-mutiny")
-    implementation("io.quarkus:quarkus-mongodb-panache")
+//    implementation("io.quarkus:quarkus-mongodb-panache")
     implementation("io.quarkus:quarkus-resteasy-jsonb")
     implementation("io.quarkus:quarkus-config-yaml")
     implementation("io.quarkus:quarkus-resteasy")
 //    implementation("io.quarkus:quarkus-smallrye-jwt")
     implementation("io.quarkus:quarkus-logging-json")
     implementation("io.quarkus:quarkus-container-image-jib")
-    implementation("io.quarkus:quarkus-mongodb-client")
+//    implementation("io.quarkus:quarkus-mongodb-client")
     implementation("io.quarkus:quarkus-hibernate-validator")
     implementation("io.quarkus:quarkus-smallrye-openapi")
     implementation("io.quarkus:quarkus-vertx-web")
@@ -61,4 +61,10 @@ allOpen {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
     kotlinOptions.javaParameters = true
+}
+
+tasks.withType<Test> {
+    this.testLogging {
+        this.showStandardStreams = true
+    }
 }
