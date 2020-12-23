@@ -38,6 +38,43 @@ If you want to build an _über-jar_, execute the following command:
 
 The application is now runnable using `java -jar build/backend-1.0.0-SNAPSHOT-runner.jar`.
 
+## Necessary configuration
+In application.yml you have to specify
+```yaml
+quarkus:
+  mongodb:
+    connection-string: # mongodb address example: mongodb://localhost:27017
+    database: # database name  example: borrow
+  smallrye-jwt:
+    auth-rsa-sig-provider: # security provider example: SunRsaSign
+    enabled: true # enable jwt 
+mp:
+  jwt:
+    verify:
+      publickey:
+        location: # location of rsa public key example: META-INF/resources/publicKey.pem
+      issuer: # jwt key issuer example: https://borrow.dev
+smallrye:
+  jwt:
+    sign:
+      key-location: # location of rsa public key example: META-INF/resources/privateKey.pem 
+backend:
+  password:
+    salt: # SHA-256 salt. It can be any string
+```
+Additionally you can run migration on startup with
+```yaml
+  mongo:
+    migration:
+      enabled: true
+```
+## Rsa Keys
+For JWT to work you have to have public and private rsa keys. In unix system you can generate it by running commands.
+``` 
+openssl req -newkey rsa:2048 -new -nodes -keyout privateKey.pem -out csr.pem
+openssl rsa -in privateKey.pem -pubout > publicKey.pem
+```
+After that copy publicKey.pem and privateKey.pem to app/src/main/resource/META-INF/resources/
 ## Creating a native executable
 
 You can create a native executable using: 

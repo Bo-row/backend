@@ -1,0 +1,26 @@
+"%test":
+  quarkus:
+    mongodb:
+      write-concern:
+        journal: false
+      connection-string: mongodb://localhost:27017
+      database: borrow
+    smallrye-jwt:
+      auth-rsa-sig-provider: SunRsaSign
+      enabled: true
+  mp:
+    jwt:
+      verify:
+        publickey:
+          location: META-INF/resources/publicKey.pem
+        issuer: https://borrow.dev
+  smallrye:
+    jwt:
+      sign:
+        key-location: META-INF/resources/privateKey.pem
+  backend:
+    password:
+      salt: salt
+    mongo:
+      migration:
+        enabled: false
